@@ -1,24 +1,24 @@
-# href-js
+# href
 
-> **Beta now, use it at your own risk**
+> **Unstable now, use it at your own risk**
 
-href-js is a lib for working with incomplete URLs (without a base) in the builtin [URL](https://developer.mozilla.org/en-US/docs/Web/API/URL)'s way
+href is a lib for working with incomplete URLs (without a base) in the builtin [URL](https://developer.mozilla.org/en-US/docs/Web/API/URL)'s way
 
 ## Usage
 
-Install href-js:
+Install href:
 
 ```bash
 # npm
-npm install href-js
+npm install @lonr/href
 # yarn
-yarn add href-js
+yarn add @lonr/href
 ```
 
 Usage:
 
 ```js
-import Href from "href-js";
+import Href from "@lonr/href";
 const href = new Href("path/to/file");
 ```
 

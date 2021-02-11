@@ -1,7 +1,7 @@
 {
-  "name": "href-js",
-  "version": "1.0.0",
-  "description": "href-js is a lib for working with incomplete URLs (without a base) in the builtin URL's way",
+  "name": "@lonr/href",
+  "version": "1.0.1",
+  "description": "href is a lib for working with incomplete URLs (without a base) in the builtin URL's way",
   "type": "commonjs",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -18,9 +18,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/lonr/href-js.git"
+    "url": "https://github.com/lonr/href.git"
   },
-  "homepage": "https://github.com/lonr/href-js",
+  "homepage": "https://github.com/lonr/href",
   "license": "MIT",
   "scripts": {
     "prebuild": "rimraf dist",
