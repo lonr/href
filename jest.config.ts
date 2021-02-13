@@ -7,7 +7,7 @@ export default {
   projects: [
     {
       displayName: 'jsdom',
-      testEnvironment: './custom-test-environment.js',
+      testEnvironment: './jsdom-test-environment.js',
       clearMocks: true,
       globals: {
         'ts-jest': {
@@ -29,6 +29,12 @@ export default {
       },
       preset: 'ts-jest',
       testPathIgnorePatterns: ['<rootDir>/dist/', '<rootDir>/node_modules/'],
+    },
+    {
+      displayName: 'electron',
+      runner: '@jest-runner/electron',
+      testEnvironment: '@jest-runner/electron/environment',
+      transform: { '\\.ts$': 'ts-jest' },
     },
   ],
 };

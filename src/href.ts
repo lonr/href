@@ -26,6 +26,10 @@ export default class Href {
     let parsedBase: HrefContext | null = null;
     // try to use `URL`
     try {
+      // prevent Chrome from parsing `new URL('#abc')`
+      if (baseStr === undefined && hrefStr.startsWith('#')) {
+        throw 'e';
+      }
       this._url = new URL(hrefStr, baseStr);
     } catch (error) {
       // with a base

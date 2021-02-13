@@ -5,6 +5,21 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Debug Jest Tests",
+      "type": "node",
+      "request": "launch",
+      "runtimeArgs": [
+        "--inspect-brk=9229",
+        "${workspaceRoot}/node_modules/.bin/jest",
+        "--runInBand"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229,
+      "sourceMaps": true,
+      "disableOptimisticBPs": true
+    },
+    {
       "type": "pwa-node",
       "request": "launch",
       "name": "Launch current file",
@@ -12,7 +27,7 @@
       "program": "${file}",
       // "program": "${workspaceFolder}${pathSeparator}dist${pathSeparator}${fileBasenameNoExtension}.js",
       // "args": ["--experimental-modules"],
-      "preLaunchTask": "tsc: build - tsconfig.debug.json",
+      "preLaunchTask": "tsc: build - tsconfig.json",
       "outFiles": ["${workspaceFolder}/dist/**/*.js"]
     }
   ]

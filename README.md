@@ -2,7 +2,7 @@
 
 > **Unstable now, use it at your own risk**
 
-href is a lib for working with incomplete URLs (without a base) in the builtin [URL](https://developer.mozilla.org/en-US/docs/Web/API/URL)'s way
+href is a lib for working with incomplete (without a base) URLs in the builtin [URL](https://developer.mozilla.org/en-US/docs/Web/API/URL)'s way
 
 ## Usage
 
@@ -30,8 +30,8 @@ It behaviors like the builtin URL API:
   - When using `Href` with other incomplete URLs, only `href`, `pathname`, `search`, `searchParams`, `hash` will work
   - `new Href('path/to/file1?q=1').searchParams.set('q','2')`
   - `new Href('file2', 'path/to/file1').pathname === 'path/to/file2'`
-  - `new Href('file2', 'path/').pathname === 'path/to/file2'`
-  - `new Href('../../file2')'`
+  - `new Href('file2', 'path/').pathname === 'path/file2'`
+  - `new Href('../../file2')` keeps `../../`
 
 ## Credits
 
