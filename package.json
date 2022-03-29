@@ -1,0 +1,25 @@
+{
+  "name": "@lonr/href",
+  "version": "2.0.0",
+  "description": "A URL-like API that helps you resolve relative URLs",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lonr/href.git"
+  },
+  "author": "lonr",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lonr/href/issues"
+  },
+  "homepage": "https://github.com/lonr/href#readme",
+  "dependencies": {
+    "tr46": "^3.0.0"
+  }
+}
