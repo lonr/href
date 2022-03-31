@@ -1,6 +1,6 @@
 {
   "name": "@lonr/href",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A URL-like API that helps you resolve relative URLs",
   "keywords": [
     "URL",
