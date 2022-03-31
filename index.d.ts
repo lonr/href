@@ -1,6 +1,6 @@
 export class RelativeURL {
   /**
-   * Creates a relative URL object. You may want the built-in URL API instead If you're working with full URLs (e.g. `https://example.com/foo`)
+   * Creates a relative URL object. You may want the built-in URL API instead If you're working with complete URLs (e.g. `https://example.com/foo`)
    * @param url A relative URL
    * @param base The base relative URL. Optional
    */

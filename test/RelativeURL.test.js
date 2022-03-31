@@ -13,21 +13,24 @@ const props = ["pathname", "search", "hash"];
 describe("RelativeURL handles relative URLs", () => {
   it("accepts an absolute path with search and hash appended", () => {
     const url = new RelativeURL("/path/to/..?q1=1&q2=2#a");
-    const fullUrl = new URL("/path/to/..?q1=1&q2=2#a", "https://example.com");
+    const completeURL = new URL(
+      "/path/to/..?q1=1&q2=2#a",
+      "https://example.com"
+    );
     for (const name of props) {
-      expect(url[name]).toBe(fullUrl[name]);
+      expect(url[name]).toBe(completeURL[name]);
     }
     expect(url.href).toBe(props.map((name) => url[name]).join(""));
   });
 
   it("percent encodes chars like URL does", () => {
     const url = new RelativeURL("/中文path/😂/..?🪝a=📏&🐟=🧂b#👍c");
-    const fullUrl = new URL(
+    const completeURL = new URL(
       "/中文path/😂/..?🪝a=📏&🐟=🧂b#👍c",
       "https://example.com"
     );
     for (const name of props) {
-      expect(url[name]).toBe(fullUrl[name]);
+      expect(url[name]).toBe(completeURL[name]);
     }
     expect(url.href).toBe(props.map((name) => url[name]).join(""));
   });
@@ -59,24 +62,30 @@ describe("RelativeURL handles relative URLs", () => {
 
   it("sets pathname prop", () => {
     const url = new RelativeURL("/path/to/..?q1=1&q2=2#a");
-    const fullUrl = new URL("/path/to/..?q1=1&q2=2#a", "https://example.com");
+    const completeURL = new URL(
+      "/path/to/..?q1=1&q2=2#a",
+      "https://example.com"
+    );
     url.pathname = "/path2/to2/..?q3=3&q4=4#b";
-    fullUrl.pathname = "/path2/to2/..?q3=3&q4=4#b";
+    completeURL.pathname = "/path2/to2/..?q3=3&q4=4#b";
     for (const name of props) {
-      url[name] = fullUrl[name];
-      expect(url[name]).toBe(fullUrl[name]);
+      url[name] = completeURL[name];
+      expect(url[name]).toBe(completeURL[name]);
     }
     expect(url.href).toBe(`${url.pathname}${url.search}${url.hash}`);
   });
 
   it("sets search prop", () => {
     const url = new RelativeURL("/path/to/..?q1=1&q2=2#a");
-    const fullUrl = new URL("/path/to/..?q1=1&q2=2#a", "https://example.com");
+    const completeURL = new URL(
+      "/path/to/..?q1=1&q2=2#a",
+      "https://example.com"
+    );
     url.search = "?q3=3&q4=4#b";
-    fullUrl.search = "?q3=3&q4=4#b";
+    completeURL.search = "?q3=3&q4=4#b";
     for (const name of props) {
-      url[name] = fullUrl[name];
-      expect(url[name]).toBe(fullUrl[name]);
+      url[name] = completeURL[name];
+      expect(url[name]).toBe(completeURL[name]);
     }
     expect(url.href).toBe(`${url.pathname}${url.search}${url.hash}`);
   });

@@ -24,7 +24,8 @@
   },
   "files": [
     "index.js",
-    "lib/*.js"
+    "lib/*.js",
+    "!lib/TolerantURL.js"
   ],
   "scripts": {
     "build-live-viewer": "esbuild --bundle --global-name=href --sourcemap --outfile=live-viewer/href.js index.js",
