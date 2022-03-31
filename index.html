@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<title>Live URL Viewer</title>
+<link rel="stylesheet" href="style.css" />
+
+<script src="href.js"></script>
+
+<h1>Live RelativeURL Viewer</h1>
+
+<p>
+  The output below will display a
+  <a href="https://github.com/lonr/href">RelativeURL</a>'s parsed components
+  versus those given by URL from the browser.
+</p>
+
+<p>
+  RelativeURL is based on the code of
+  <a href="https://github.com/jsdom/whatwg-url">jsdom/whatwg-url</a> which
+  closely follows the <a href="http://url.spec.whatwg.org/">URL Standard</a> and
+  the associated
+  <a href="https://github.com/w3c/web-platform-tests/tree/master/url"
+    >web-platform-tests</a
+  >.
+</p>
+
+<p>
+  The output will be colored <span class="pass">dark green</span> unless a
+  difference occurs between the two parsers in which case the affected URL
+  component will be colored <span class="fail">red</span>.
+</p>
+
+<form>
+  <label for="url">URL:</label>
+  <input id="url" value="https://example.com/" autofocus />
+
+  <label for="base">Base URL:</label>
+  <input id="base" value="about:blank" />
+</form>
+
+<h2>RelativeURL's components</h2>
+
+<table class="output" id="href-output">
+  <tr id="href">
+    <th>href</th>
+    <td></td>
+  </tr>
+  <tr id="protocol">
+    <th>protocol</th>
+    <td></td>
+  </tr>
+  <tr id="username">
+    <th>username</th>
+    <td></td>
+  </tr>
+  <tr id="password">
+    <th>password</th>
+    <td></td>
+  </tr>
+  <tr id="port">
+    <th>port</th>
+    <td></td>
+  </tr>
+  <tr id="hostname">
+    <th>hostname</th>
+    <td></td>
+  </tr>
+  <tr id="pathname">
+    <th>pathname</th>
+    <td></td>
+  </tr>
+  <tr id="search">
+    <th>search</th>
+    <td></td>
+  </tr>
+  <tr id="hash">
+    <th>hash</th>
+    <td></td>
+  </tr>
+</table>
+
+<p class="output error" id="href-error"></p>
+
+<h2>Browser's URL components</h2>
+
+<table class="output" id="browser-output">
+  <tr id="href">
+    <th>href</th>
+    <td></td>
+  </tr>
+  <tr id="protocol">
+    <th>protocol</th>
+    <td></td>
+  </tr>
+  <tr id="username">
+    <th>username</th>
+    <td></td>
+  </tr>
+  <tr id="password">
+    <th>password</th>
+    <td></td>
+  </tr>
+  <tr id="port">
+    <th>port</th>
+    <td></td>
+  </tr>
+  <tr id="hostname">
+    <th>hostname</th>
+    <td></td>
+  </tr>
+  <tr id="pathname">
+    <th>pathname</th>
+    <td></td>
+  </tr>
+  <tr id="search">
+    <th>search</th>
+    <td></td>
+  </tr>
+  <tr id="hash">
+    <th>hash</th>
+    <td></td>
+  </tr>
+</table>
+
+<p class="output error" id="browser-error"></p>
+
+<footer>
+  <a href="https://jsdom.github.io/whatwg-url">Live URL Viewer</a>
+  <br />
+  <a href="https://github.com/lonr/href/tree/main/live-viewer"
+    >Fork me on GitHub!</a
+  >
+</footer>
+
+<iframe hidden id="browser-iframe"></iframe>
+
+<script src="live-viewer.js"></script>
