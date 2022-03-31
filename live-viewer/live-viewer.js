@@ -8,7 +8,8 @@
 
   // Use an iframe to avoid <base> affecting the main page. This is especially bad in Edge where it
   // appears to break Edge's DevTools.
-  const browserIframeDocument = document.querySelector("#browser-iframe").contentDocument;
+  const browserIframeDocument =
+    document.querySelector("#browser-iframe").contentDocument;
   const browserAnchor = browserIframeDocument.createElement("a");
   const browserBase = browserIframeDocument.createElement("base");
   browserIframeDocument.head.appendChild(browserBase);
@@ -23,7 +24,7 @@
     "hostname",
     "pathname",
     "search",
-    "hash"
+    "hash",
   ];
 
   urlInput.addEventListener("input", update);
@@ -33,11 +34,14 @@
 
   function update() {
     const browserResult = getBrowserResult();
-    const jsdomResult = getJsdomResult();
-    const mismatchedComponents = getMismatchedComponents(browserResult, jsdomResult);
+    const hrefResult = getHrefResult();
+    const mismatchedComponents = getMismatchedComponents(
+      browserResult,
+      hrefResult
+    );
 
     setResult("browser", browserResult, mismatchedComponents);
-    setResult("jsdom", jsdomResult, mismatchedComponents);
+    setResult("href", hrefResult, mismatchedComponents);
     updateFragmentForSharing();
   }
 
@@ -53,9 +57,14 @@
       output.hidden = false;
       error.hidden = true;
       for (const component of components) {
-        const componentEl = output.querySelector(`#${component}`).querySelector("td");
+        const componentEl = output
+          .querySelector(`#${component}`)
+          .querySelector("td");
         setComponentElValue(componentEl, result[component]);
-        setComponentElMismatch(componentEl, mismatchedComponents.has(component));
+        setComponentElMismatch(
+          componentEl,
+          mismatchedComponents.has(component)
+        );
       }
     }
   }
@@ -64,10 +73,16 @@
     // This shows up in Edge where username/password are undefined.
     const isNonString = typeof value !== "string";
     const isEmptyString = value === "";
+    const isUndefined = value === undefined;
 
-    componentEl.textContent = isEmptyString ? "(empty string)" : value;
+    componentEl.textContent = isEmptyString
+      ? "(empty string)"
+      : isUndefined
+      ? "(undefined)"
+      : value;
     componentEl.classList.toggle("empty-string", isEmptyString);
     componentEl.classList.toggle("non-string", isNonString);
+    componentEl.classList.toggle("undefined", isUndefined);
   }
 
   function setComponentElMismatch(componentEl, isMismatched) {
@@ -103,16 +118,19 @@
     return browserAnchor;
   }
 
-  function getJsdomResult() {
+  function getHrefResult() {
     try {
-      return new whatwgURL.URL(urlInput.value, baseInput.value);
+      // eslint-disable-next-line no-undef
+      return new href.RelativeURL(urlInput.value, baseInput.value);
     } catch (e) {
       return e;
     }
   }
 
   function updateFragmentForSharing() {
-    location.hash = `url=${encodeToBase64(urlInput.value)}&base=${encodeToBase64(baseInput.value)}`;
+    location.hash = `url=${encodeToBase64(
+      urlInput.value
+    )}&base=${encodeToBase64(baseInput.value)}`;
   }
 
   function setFromFragment() {
@@ -143,14 +161,16 @@
   // the live viewer which used btoa / atob directly.
   function encodeToBase64(originalString) {
     const bytes = te.encode(originalString);
-    const byteString = Array.from(bytes, byte => String.fromCharCode(byte)).join("");
+    const byteString = Array.from(bytes, (byte) =>
+      String.fromCharCode(byte)
+    ).join("");
     const encoded = btoa(byteString);
     return encoded;
   }
 
   function decodeFromBase64(encoded) {
     const byteString = atob(encoded);
-    const bytes = Uint8Array.from(byteString, char => char.charCodeAt(0));
+    const bytes = Uint8Array.from(byteString, (char) => char.charCodeAt(0));
     const originalString = td.decode(bytes);
     return originalString;
   }

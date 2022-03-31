@@ -8,7 +8,12 @@ body {
   margin: 12px;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-style: italic;
   color: DarkBlue;
   margin-bottom: 0.2em;
@@ -18,7 +23,11 @@ h1 {
   margin-top: 0;
 }
 
-h2, h3, h4, h5, h6 {
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin-top: 1em;
 }
 
@@ -68,7 +77,8 @@ form input {
 }
 
 .output td {
-  font-family: 'Bitstream Vera Sans Mono', 'Andale Mono', 'Lucida Console', monospace, fixed;
+  font-family: "Bitstream Vera Sans Mono", "Andale Mono", "Lucida Console",
+    monospace, fixed;
 }
 
 .pass {
@@ -86,7 +96,17 @@ form input {
 }
 
 .output td.empty-string:not(.fail) {
-  color: #CCC;
+  color: #ccc;
+}
+
+.output td.undefined {
+  font-family: inherit;
+  font-size: smaller;
+  font-style: italic;
+}
+
+.output td.undefined:not(.fail) {
+  color: #ccc;
 }
 
 .output td.non-string {

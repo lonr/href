@@ -2,24 +2,45 @@
   "name": "@lonr/href",
   "version": "2.0.0",
   "description": "A URL-like API that helps you resolve relative URLs",
-  "main": "index.js",
-  "directories": {
-    "lib": "lib"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "keywords": [
+    "URL",
+    "RelativeURL",
+    "relative urls"
+  ],
+  "homepage": "https://github.com/lonr/href#readme",
+  "bugs": {
+    "url": "https://github.com/lonr/href/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lonr/href.git"
   },
-  "author": "lonr",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/lonr/href/issues"
+  "author": "lonr",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "directories": {
+    "lib": "lib"
   },
-  "homepage": "https://github.com/lonr/href#readme",
-  "dependencies": {
-    "tr46": "^3.0.0"
+  "files": [
+    "index.js",
+    "lib/*.js"
+  ],
+  "scripts": {
+    "build-live-viewer": "esbuild --bundle --global-name=href --sourcemap --outfile=live-viewer/href.js index.js",
+    "lint": "eslint --ext .js lib test",
+    "prettier": "prettier --write .",
+    "prettier-check": "prettier --check .",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "esbuild": "^0.14.28",
+    "eslint": "^8.12.0",
+    "eslint-config-prettier": "^8.5.0",
+    "jest": "^27.5.1",
+    "prettier": "^2.6.1"
+  },
+  "engines": {
+    "node": ">=12"
   }
 }
